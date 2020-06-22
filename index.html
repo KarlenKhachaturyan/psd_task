@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/drop_down.js"></script>
+    <title>Task</title>
+</head>
+
+<body>
+        <div class="page">
+            <div class="sidenav">
+                <div class="header_logo">
+                    <button id="dropdown-btn" onclick="drop()">
+                        <img id="header_logo" src="./images/svg/header_logo.svg" alt="Logo">
+                    </button>
+                    <div id="dropdown-container">
+                        <hr class="black">
+                        <a href="#"><i class="fas fa-tachometer-alt"></i></a>
+                        <a href="#"><i class="fas fa-key"></i></a>
+                        <a href="#"><i class="fas fa-user"></i></a>
+                        <a href="#"><i class="fas fa-bullhorn"></i></a>
+                        <a href="#"><i class="fas fa-chart-area"></i></a>
+                        <a href="#"><i class="fas fa-exchange-alt"></i></a>
+                        <a href="#"><i class="fas fa-cog"></i></a>
+                    </div>
+                </div>
+                <hr class="black"><hr class="grey">
+                <a href="#favorites"><i class="fas fa-heart"></i></a>
+                <hr class="black"><hr class="grey">
+                <a href="#history"><i class="fas fa-clock"></i></a>
+                <hr class="black"><hr class="grey">
+                <a href="#display"><i class="fas fa-eye"></i></a>
+                <hr class="black"><hr class="grey">
+            </div>
+            <div class="content">
+                <header class="header">
+                    
+                        <div class="icon">
+                            <div class="header_menu">
+                                <i class="fas fa-outdent"></i>
+                            </div>
+                        </div>
+                        <div class="lang_prof">
+                            <div class="lang">
+                                <div class="header_flag">
+                                    <button id="drop-btn" onclick="dropFlag()">
+                                        <img src="./images/svg/united.svg" alt="English"> EN
+                                    </button>
+                                    <div id="dropdown-container_flag">
+                                        <a href="#"><img src="./images/svg/russia.svg" alt="Russian"> RU</a>
+                                        <a href="#"><img src="./images/svg/armenia.svg" alt="Armenian"> AM</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile">
+                                <div class="profile_image">
+                                    <img id="profile_image" src="./images/heade_profile_image.jpg" alt="Profile">
+                                </div>
+                                <div class="prof_in">
+                                    <p id="profile_name">Hello, Max!</p>
+                                    <p id="profile_info">Last login: Thu Mar 20 2014</p>
+                                </div>
+                                <div class="prof_button">
+                                    <button class="header_button"><i class="fas fa-caret-down"></i></button>
+                                </div>
+                            </div>
+                        </div>  
+                </header>
+                <div class="fav_cont">
+                    <p>Dashboard</p>
+                    <button id="fav"><i class="fas fa-heart"></i> ADD THIS PAGE TO FAVORITES</button>
+                </div>
+                <div class="stats">
+                        <div class="sign_ups">
+                            <h2>25</h2>
+                            <div class='some'>
+                             <span id='s'>
+                                 <i class="fas fa-check"></i> SIGNUPS
+                             </span>
+                            </div>
+                        </div>
+                        <div class="profit">
+                            <h2>$ 1000</h2>
+                            <div class="some">
+                                <span id='p'>
+                                    <i class="fas fa-chart-line"></i> PROFIT
+                                </span>
+                            </div>
+                        </div>
+                        <div class= "commisions">
+                            <h2>$ 350</h2>
+                            <div class="some">
+                                <span id ='c'>
+                                    <i class="far fa-money-bill-alt"></i> COMMISSIONS
+                                </span>
+                            </div>
+                        </div>
+                        <div class="pending">
+                            <h2>$ 300</h2>
+                            <div class="some">
+                                <span id ='pc'>
+                                    <i class="fas fa-question-circle"></i> PENDING COMMISSIONS
+                                </span>
+                            </div>
+                        </div>
+                </div>
+                <div class="charts">
+                    <div class="line_chart">
+                        <div id='ln_ch_info'>
+                            <p class="ch_title">Medias Staats </p>
+                            <p>Last Week  <i class="fas fa-caret-down"></i></p>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="line-chartcanvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="doughnut">
+                        <div id='ln_ch_info'>
+                            <p class="ch_title">Active Medias</p>
+                        </div>
+                        <div class="wrapper">
+                            <canvas id='donutChart' width='200' height="150"></canvas>
+                        </div>
+                    </div>
+                    <div class="geo">
+                        <div id='g_ch_info'>
+                            <p class="ch_title">Geographic Data </p>
+                            <p>Last Month  <i class="fas fa-caret-down"></i></p>
+                        </div>
+                        <div class="wrapper">
+                            <div id="regions_div" style="width: 400px; height: 120px;"></div>
+                        </div>
+                        <div id='g_ch_m'>
+                            <div id="g_ch_m_h">
+                                <h5>Affiliate Sign Ups  <i class="fas fa-caret-down"></i></h5><br>
+                            </div>
+                            <div id='g_m_l'>
+                                <div id ='g_m_l_s'>
+                                    <h6>1: United States:  <p id='g_m_n'>200 </p></h6>
+                                </div>
+                                <div id ='g_m_l_s'>
+                                    <h6>2: China:   <p id='g_m_n'>65</p></h6>
+                                </div>
+                                <div id ='g_m_l_s'>
+                                    <h6>3: United Kingdom:  <p id='g_m_n'>22</p> </h6>
+                                </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="t_names">
+                    <div class= 'tb'>
+                        <div class='t_names_m'>
+                            <p class='t_n_p'>Top Affiliates</p>
+                        </div>
+                        <table id ="f"> 
+                            <tr class='t_b'> 
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Profit ($)</th>
+                                <th>Commissions ($)</th>
+                                <th>View</th>
+                            </tr> 
+                            <tr> 
+                                <td>1007</td>
+                                <td>Simona</td>
+                                <td>55</td>
+                                <td>Simona</td>
+                                <td id = 't_icon'>   </td>
+                            </tr> 
+                            <tr> 
+                                <td>1008</td>
+                                <td>Ariana</td>
+                                <td>45</td>
+                                <td>Ariana</td>
+                                <td id = 't_icon'></td>
+                            </tr> 
+                            <tr> 
+                                <td>1009</td>
+                                <td>Adam</td>
+                                <td>35</td>
+                                <td>Adam</td>
+                                <td  id = 't_icon'></td>
+                            </tr> 
+                            <tr> 
+                                <td>1010</td>
+                                <td>John</td>
+                                <td>25</td>
+                                <td>John</td>
+                                <td id = 't_icon'> </td>
+                            </tr> 
+                            <tr> 
+                                <td>1011</td>
+                                <td>Garry</td>
+                                <td>15</td>
+                                <td>Gary</td>
+                                <td id = 't_icon'> </td>
+                            </tr> 
+                            
+                        </table> 
+                    </div>
+                    <div class= 'tb'>
+                        <div class='t_names_m'>
+                            <p class='t_n_p'>Sign Ups</p>
+                        </div>
+                        <table id ="f"> 
+                            <tr class='t_b'> 
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Profit ($)</th>
+                                <th>Commissions ($)</th>
+                                <th>View</th>
+                            </tr> 
+                            <tr> 
+                                <td>1007</td>
+                                <td>Simona</td>
+                                <td>55</td>
+                                <td>Simona</td>
+                                <td id = 't_icon'>   </td>
+                            </tr> 
+                            <tr> 
+                                <td>1008</td>
+                                <td>Ariana</td>
+                                <td>45</td>
+                                <td>Ariana</td>
+                                <td id = 't_icon'></td>
+                            </tr> 
+                            <tr> 
+                                <td>1009</td>
+                                <td>Adam</td>
+                                <td>35</td>
+                                <td>Adam</td>
+                                <td  id = 't_icon'></td>
+                            </tr> 
+                            <tr> 
+                                <td>1010</td>
+                                <td>John</td>
+                                <td>25</td>
+                                <td>John</td>
+                                <td id = 't_icon'> </td>
+                            </tr> 
+                            <tr> 
+                                <td>1011</td>
+                                <td>Garry</td>
+                                <td>15</td>
+                                <td>Gary</td>
+                                <td id = 't_icon'> </td>
+                            </tr> 
+                            
+                        </table> 
+                    </div>
+                    <div class= 'tb'>
+                        <div class='t_names_m'>
+                            <p class='t_n_p'>Pending Commissions</p>
+                        </div>
+                        <table id ="f"> 
+                            <tr class='t_b'> 
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Profit ($)</th>
+                                <th>Commissions ($)</th>
+                                <th>View</th>
+                            </tr> 
+                            <tr> 
+                                <td>1007</td>
+                                <td>Simona</td>
+                                <td>55</td>
+                                <td>Simona</td>
+                                <td id = 't_icon'>   </td>
+                            </tr> 
+                            <tr> 
+                                <td>1008</td>
+                                <td>Ariana</td>
+                                <td>45</td>
+                                <td>Ariana</td>
+                                <td id = 't_icon'></td>
+                            </tr> 
+                            <tr> 
+                                <td>1009</td>
+                                <td>Adam</td>
+                                <td>35</td>
+                                <td>Adam</td>
+                                <td  id = 't_icon'></td>
+                            </tr> 
+                            <tr> 
+                                <td>1010</td>
+                                <td>John</td>
+                                <td>25</td>
+                                <td>John</td>
+                                <td id = 't_icon'> </td>
+                            </tr> 
+                            <tr> 
+                                <td>1011</td>
+                                <td>Garry</td>
+                                <td>15</td>
+                                <td>Gary</td>
+                                <td id = 't_icon'> </td>
+                            </tr> 
+                            
+                        </table> 
+                    </div>
+                </div>
+        </div>
+
+        </div>
+        </div>
+    </div>
+    <script src="./js/donutChart.js"></script>
+    <script src="./js/lineChart.js"></script>
+    <script src="./js/geoCharts.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+</body>
+
+</html>
